@@ -16,14 +16,20 @@ class _HomePageState extends State<HomePage> {
     'Biography',
     'Novel',
     'Comic',
+    'Dictionary',
+    'Guidebook',
+    'Magazine',
 
   ];
 
   List<Widget> categories =  [
     PopularCategories(),
-    BiographyCategories(),
-    NovelCategories(),
-    ComicCategories(),
+    const BiographyCategories(),
+    const NovelCategories(),
+    const ComicCategories(),
+    const ComicCategories(),
+    const ComicCategories(),
+    const ComicCategories(),
   ];
 
 
@@ -212,10 +218,10 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Categories', style: TextStyle(fontSize: 15, color: AppColor.black, fontWeight: FontWeight.bold),),
+              const Text('Categories', style: TextStyle(fontSize: 15, color: AppColor.black, fontWeight: FontWeight.bold),),
               GestureDetector(
                   onTap: (){},
-                  child: Text('See All', style: TextStyle(fontSize: 15, color: AppColor.primaryColor, fontWeight: FontWeight.bold),)),
+                  child: const Text('See All', style: TextStyle(fontSize: 15, color: AppColor.primaryColor, fontWeight: FontWeight.bold),)),
             ],
           ),
         ),
@@ -236,10 +242,10 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     width: 83,
                     decoration: BoxDecoration(
-                        color: selectedIndex == index ? AppColor.primaryColor : Colors.transparent,
-                        borderRadius: BorderRadius.circular(12),
+                        color: selectedIndex == index ? AppColor.primaryColor : AppColor.blue2,
+                        borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: selectedIndex == index ? Colors.transparent : AppColor.grey,
+                          color: selectedIndex == index ? Colors.transparent : Colors.transparent,
                         )),
                     child: Center(
                         child: Text(

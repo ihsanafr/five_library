@@ -1,7 +1,7 @@
+import 'package:five_library/features/chat_screen/page.dart';
 import 'package:flutter/material.dart';
 import 'package:five_library/preferences/preferences.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 import 'home_screen/model/product_model.dart';

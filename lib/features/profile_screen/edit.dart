@@ -6,7 +6,9 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffFAFAFF),
       appBar: AppBar(
+        backgroundColor: const Color(0xffFAFAFF),
         title: const Text('Edit Profile'),
         leading: IconButton(
           onPressed: () {
@@ -48,7 +50,7 @@ class EditProfile extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Email'),
               TextField(
                   keyboardType: TextInputType.text,
@@ -59,7 +61,7 @@ class EditProfile extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Phone Number'),
               TextField(
                   keyboardType: TextInputType.text,

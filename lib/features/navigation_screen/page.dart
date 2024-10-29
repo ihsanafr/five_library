@@ -20,7 +20,8 @@ class _BottomNavState extends State<BottomNav> {
       },
       icon: Column(
         children: [
-          SvgPicture.string(icon, height: 20, width: 20, color: selectedIndex == index ? AppColor.primaryColor : AppColor.grey,),
+          SvgPicture.string(icon, height: 25, color: selectedIndex == index ? AppColor.primaryColor : AppColor.grey,),
+          const SizedBox(height: 5),
           Text(label, style: TextStyle(fontSize: 12 ,color: selectedIndex == index ? AppColor.primaryColor : AppColor.grey),)
         ],
       ),
@@ -42,6 +43,7 @@ List<Widget> pages = [
       body: pages[selectedIndex],
       bottomNavigationBar: BottomAppBar(
         color: AppColor.white,
+        height: 90,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(

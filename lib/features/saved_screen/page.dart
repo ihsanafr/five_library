@@ -88,7 +88,7 @@ class SavedPage extends StatelessWidget {
                     const SizedBox(height: 12),
                     Text(
                       product.author,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
                         color: AppColor.grey,
@@ -96,7 +96,7 @@ class SavedPage extends StatelessWidget {
                     ),
                     Text(
                       product.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 14,
                         color: AppColor.black,
@@ -106,7 +106,7 @@ class SavedPage extends StatelessWidget {
                     const SizedBox(height: 3),
                     Text(
                       product.price,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                         color: AppColor.primaryColor,

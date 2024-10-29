@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 
 // class CustomIcons {
 //   static IconData user = 'assets/icons/user.svg' as IconData;
