@@ -38,6 +38,37 @@ class _DetailProductState extends State<DetailProduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        elevation: 0.0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Row(
+            children: [
+              GestureDetector(onTap: () {
+                Navigator.pop(context);
+              }, child: Icon(Icons.arrow_back))
+          ]),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartPage(),
+                    )
+                  );
+                },
+                child: SvgPicture.string(
+                  cart,
+                  width: 25,
+                )),
+          )
+        ],
+      ),
       body: ListView(
         children: [
           Container(
@@ -51,24 +82,6 @@ class _DetailProductState extends State<DetailProduct> {
                   AppImage.hujan,
                   width: 400,
                 ),
-                Positioned(
-                    top: 10,
-                    left: 10,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                            color: AppColor.white, shape: BoxShape.circle),
-                        child: const Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                        ),
-                      ),
-                    ))
               ],
             ),
           ),
@@ -180,44 +193,46 @@ class _DetailProductState extends State<DetailProduct> {
                       final product = products[index];
                       return GestureDetector(
                         onTap: () {},
-                        child: Container(
+                        child: SizedBox(
                           width: 150,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  color: AppColor.blue2,
-                                  borderRadius: BorderRadius.circular(1),
-                                  image: DecorationImage(
-                                    image: AssetImage(product.imageUrl),
-                                  ),
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Center(
-                                      child: Image.asset(product.imageUrl),
+                              SizedBox(
+                                child: Container(
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    color: AppColor.blue2,
+                                    borderRadius: BorderRadius.circular(1),
+                                    image: DecorationImage(
+                                      image: AssetImage(product.imageUrl),
                                     ),
-                                    Positioned(
-                                        top: 10,
-                                        right: 10,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: AppColor.white,
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: SvgPicture.string(
-                                              love,
-                                              color: AppColor.grey,
-                                              width: 20,
+                                  ),
+                                  child: Stack(
+                                    children: [
+                                      Center(
+                                        child: Image.asset(product.imageUrl),
+                                      ),
+                                      Positioned(
+                                          top: 10,
+                                          right: 10,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: AppColor.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
                                             ),
-                                          ),
-                                        )),
-                                  ],
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: SvgPicture.string(
+                                                love,
+                                                width: 20,
+                                              ),
+                                            ),
+                                          )),
+                                    ],
+                                  ),
                                 ),
                               ),
                               const SizedBox(height: 12),
@@ -261,50 +276,68 @@ class _DetailProductState extends State<DetailProduct> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 30.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 23),
-                      backgroundColor: AppColor.grey,
-                    ),
-                    child: Text(
-                      'Add to cart',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.blue2,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 23),
-                      backgroundColor: AppColor.primaryColor,
-                    ),
-                    child: Text(
-                      'Buy Now',
-                      style: GoogleFonts.plusJakartaSans(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
         ],
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 100,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                height: 70,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      side: const BorderSide(color: AppColor.primaryColor),
+                    ),
+                  )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: Container(
+                      child: SvgPicture.string(
+                        message,
+                        color: AppColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: SizedBox(
+                  height: 70,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                            AppColor.primaryColor),
+                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        )),
+                    onPressed: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: Container(
+                        child: const Text(
+                          'Add To Cart',
+                          style: TextStyle(color: AppColor.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

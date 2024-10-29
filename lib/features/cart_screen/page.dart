@@ -8,16 +8,20 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('cart Page'),
+        title: const Text('Your Cart'),
         leading: IconButton(
             onPressed: (){
               Navigator.pop(context);
             },
             icon: const Icon(Icons.arrow_back_ios)),
       ),
-      body: const Center(
-        child: Text('Cart Page'),
-      ),
+      body: ListView(
+        children: [
+          Row(
+
+          )
+        ],
+      )
     );
   }
 }
