@@ -77,70 +77,78 @@ class _PopularCategoriesState extends State<PopularCategories> {
                 ),
               );
             },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
-                Container(
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: AppColor.blue2,
-                    borderRadius: BorderRadius.circular(1),
-                    image: DecorationImage(
-                      image: AssetImage(product.imageUrl),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: AppColor.blue2,
+                        borderRadius: BorderRadius.circular(1),
+                        image: DecorationImage(
+                          image: AssetImage(product.imageUrl),
+                        ),
+                      ),
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: Image.asset(product.imageUrl),
+                          ),
+                          Positioned(
+                              top: 10,
+                              right: 10,
+                              child: Container(
+
+                                decoration: BoxDecoration(
+                                  color: AppColor.white,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child:  Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SvgPicture.string(love,
+                                    color: AppColor.grey, width: 20,
+                                  ),
+                                ),
+                              )
+
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: Image.asset(product.imageUrl),
+                    const SizedBox(height: 12),
+                    Text(
+                      product.author,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: AppColor.grey,
                       ),
-                      Positioned(
-                          top: 10,
-                          right: 10,
-                          child: Container(
-
-                            decoration: BoxDecoration(
-                              color: AppColor.white,
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child:  Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SvgPicture.string(love,
-                                color: AppColor.grey, width: 20,
-                              ),
-                            ),
-                          )
-
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          product.title,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
+                            color: AppColor.black,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      product.price,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                        color: AppColor.primaryColor,
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  product.author,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    color: AppColor.grey,
-                  ),
-                ),
-                Text(
-                  product.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: AppColor.black,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  product.price,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                    color: AppColor.primaryColor,
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

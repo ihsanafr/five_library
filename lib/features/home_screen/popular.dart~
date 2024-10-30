@@ -1,14 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+part of '../features.dart';
 
-import '../../../preferences/colors.dart';
-import '../../../preferences/icons.dart';
-import '../model/product_model.dart';
 
-class PopularCategories extends StatelessWidget {
-  const PopularCategories({super.key});
+class PopularCategories extends StatefulWidget {
+   PopularCategories({super.key});
 
+  int selectedIndex = 0;
+
+  @override
+  State<PopularCategories> createState() => _PopularCategoriesState();
+
+
+}
+
+class _PopularCategoriesState extends State<PopularCategories> {
   final List<Product> products = const [
+    Product(
+      author: 'Tere Liye',
+      imageUrl: 'assets/images/books/hujan.png',
+      title: 'Hujan',
+      price: 'Rp. 89.000',
+    ),
+    Product(
+      author: 'James Clear',
+      imageUrl: 'assets/images/books/atomichabits.png',
+      title: 'Atomic Habits',
+      price: 'Rp. 96.000',
+    ),
     Product(
       author: 'John c Maxwell',
       imageUrl: 'assets/images/books/tmdr.png',
@@ -35,9 +52,6 @@ class PopularCategories extends StatelessWidget {
     ),
   ];
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,7 +69,14 @@ class PopularCategories extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final product = products[index];
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DetailProduct()
+                ),
+              );
+            },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -97,25 +118,29 @@ class PopularCategories extends StatelessWidget {
                 const SizedBox(height: 12),
                 Text(
                   product.author,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
                     color: AppColor.grey,
                   ),
                 ),
-                Text(
-                  product.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: AppColor.black,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      product.title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: AppColor.black,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 3),
                 Text(
                   product.price,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                     color: AppColor.primaryColor,

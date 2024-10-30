@@ -1,7 +1,8 @@
 part of '../features.dart';
 
-class NovelCategories extends StatelessWidget {
-  const NovelCategories({super.key});
+
+class ComicCategories extends StatelessWidget {
+  const ComicCategories({super.key});
 
   final List<Product> products = const [
     Product(
@@ -9,6 +10,12 @@ class NovelCategories extends StatelessWidget {
       imageUrl: 'assets/images/books/overthinking.png',
       title: 'Overthinking',
       price: 'Rp. 72.000',
+    ),
+    Product(
+      author: 'John c Maxwell',
+      imageUrl: 'assets/images/books/tmdr.png',
+      title: 'The Maxwell Daily Readers hnhinininj',
+      price: 'Rp. 109.000',
     ),
     Product(
       author: 'Asti Musman',
@@ -39,7 +46,7 @@ class NovelCategories extends StatelessWidget {
           final product = products[index];
           return GestureDetector(
             onTap: () {},
-            child: ListView(
+            child: Column(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
